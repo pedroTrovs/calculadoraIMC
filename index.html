@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IMC</title>
+
+    <style>
+        body{
+            background-color: lightgray;
+            display: flex; 
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            width: fit-content;
+            padding: 15px;
+            border-radius: 5px;
+            border: solid 3px;
+            border-color: rgb(11, 145, 138);
+            
+        }
+
+        button{
+            margin: 10%;
+            border-radius: 5px;
+            border: solid black;
+            background-color: white;
+            color: black;
+            transition: 1s ease-out;
+        }
+
+        button:hover{
+            border: solid rgb(11, 145, 138);
+            background-color: rgb(11, 145, 138);
+            color: white;
+            transition: ease 1s;
+        }
+        input {
+            border: solid 3px darkblue;
+            transition: 1s ease-out;
+        }
+        input:hover{
+            border-color: rgb(11, 145, 138);
+            transition: ease 1s;
+        }
+
+        
+    </style>
+
+</head>
+<body>
+    <h1>Basic calculator</h1>
+    <form action="">
+        Altura (metros): <input type="text" id="txtH">
+        Peso (quilos): <input type="text" id="txtW">
+        <button type="button" onclick="calc()">Calcular IMC</button>
+        Resultado: <input type="text" id="txtR">
+    </form>
+</body>
+
+<script>
+    function calc()
+    {
+        let h = parseFloat(document.getElementById("txtH").value);
+        let w = parseFloat(document.getElementById("txtW").value);
+        let r = w/(h*h);
+        document.getElementById("txtR").value = r;
+        message(r)
+    }
+    function message(r)
+    {
+        var msg;
+        if(r < 18.5)
+        {
+            msg = "Magreza";
+        }
+        else
+        {
+            if(r < 25)
+            {
+                msg = "Normal";
+            }
+            else
+            {
+                if(r < 30)
+                {
+                    msg = "Sobrepeso";
+                }
+                else
+                {
+                    if(r < 35)
+                    {
+                        msg = "Obesidade grau I";
+                    }
+                    else
+                    {
+                        if(r < 40)
+                        {
+                            msg = "Obesidade grau II";
+                        }
+                        else
+                        {
+                            msg = "Obesidade grau III";
+                        }
+                    }
+                }
+            }
+        }
+        alert(msg);
+    }
+
+</script>
+</html>
